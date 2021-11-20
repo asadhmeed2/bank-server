@@ -7,9 +7,6 @@ const addUser = (req, res) => {
   }
   cash = parseInt(cash);
   credit = parseInt(credit);
-  console.log("cash ",cash);
-  console.log("passportId ",passportId);
-  console.log("credit ",credit);
   const user = new userModule({
     passportId,
     cash,
@@ -38,7 +35,6 @@ const getUserByPassportId = (req, res) => {
     res.status(200).json(data);
   });
 };
-
 /**
  *
  * @param {*} type type of the transaction deposit or withdrow or update credit
@@ -91,7 +87,8 @@ function depositOrWithdrowOrUpdateCredit(type, req, res) {
         if (data.cash >= -parseInt(req.body.amount)) {
           userModule.findByIdAndUpdate(
             data._id,
-            { credit: parseInt(req.body.amount) },{new:true},
+            { credit: parseInt(req.body.amount) },
+            { new: true },
             (err, data) => {
               if (err) {
                 res.status(500).json("bade request");

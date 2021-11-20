@@ -8,7 +8,6 @@ Router.post("/users", (req, res) => {
 
 // get all users
 Router.get("/users", (req, res) => {
-  console.log(req.body);
   userController.getUsers(req, res);
 });
 // get user by id
